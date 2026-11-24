@@ -1,20 +1,275 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#080b0a">
+    <meta name="description" content="Uma experiência interativa sobre o futuro da Inteligência Artificial.">
+
+    <title>2049 — Você decide o futuro da IA</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="style.css">
-    <title>Você decide o futuro da IA</title>
+    <script type="module" src="js/script.js"></script>
 </head>
+
 <body>
-    <div class="caixa-principal">
-        <h1>Você decide o futuro da IA</h1>
-        <div class="caixa-perguntas"></div>
-        <div class="caixa-alternativas"></div>
-        <div class="caixa-resultado">
-            <p class="texto-resultado"></p>
-        </div>
-    </div>
-    <script src="script.js"></script>
+
+    <div class="background-grid"></div>
+    <div class="noise"></div>
+
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <main class="interface">
+
+        <header class="topbar">
+
+            <div class="logo">
+                <span class="logo-icon">✳</span>
+                <span>FUTURE<span class="logo-light">/LAB</span></span>
+            </div>
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                SISTEMA ONLINE
+            </div>
+
+            <div class="year">
+                <span>SIMULAÇÃO</span>
+                <strong>2049</strong>
+            </div>
+
+        </header>
+
+        <div class="linha-decorativa"></div>
+
+        <!-- TELA INICIAL -->
+
+        <section class="introducao" id="introducao">
+
+            <div class="intro-tag">
+                <span></span>
+                EXPERIÊNCIA INTERATIVA Nº 0049
+            </div>
+
+            <div class="hero-content">
+
+                <div class="hero-left">
+
+                    <p class="hero-overline">
+                        O AMANHÃ NÃO ESTÁ DEFINIDO.
+                    </p>
+
+                    <h1>
+                        O FUTURO<br>
+                        NÃO É<br>
+                        <span>PREVISTO.</span>
+                    </h1>
+
+                    <p class="hero-description">
+                        A Inteligência Artificial está transformando
+                        o mundo. Mas existe uma pergunta que nenhuma
+                        máquina pode responder por você:
+                    </p>
+
+                    <p class="hero-question">
+                        QUE FUTURO VOCÊ VAI ESCOLHER?
+                    </p>
+
+                    <button class="botao-iniciar" id="iniciar">
+                        <span>INICIAR SIMULAÇÃO</span>
+                        <span class="arrow">↗</span>
+                    </button>
+
+                </div>
+
+                <div class="hero-right">
+
+                    <div class="visual-container">
+
+                        <div class="visual-label">
+                            <span>FIG. 01</span>
+                            <span>HUMAN × MACHINE</span>
+                        </div>
+
+                        <div class="visual-circle">
+                            <div class="circle circle-outer"></div>
+                            <div class="circle circle-middle"></div>
+                            <div class="circle circle-inner"></div>
+
+                            <div class="visual-core">
+                                <span>AI</span>
+                            </div>
+
+                            <div class="orbit-dot"></div>
+                            <div class="orbit-dot orbit-dot-2"></div>
+                        </div>
+
+                        <div class="visual-caption">
+                            <span>INTELIGÊNCIA ARTIFICIAL</span>
+                            <span class="caption-value">● ATIVA</span>
+                        </div>
+
+                    </div>
+
+                    <div class="side-info">
+                        <div>
+                            <span>DECISÕES</span>
+                            <strong>05</strong>
+                        </div>
+
+                        <div>
+                            <span>POSSIBILIDADES</span>
+                            <strong>∞</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="intro-bottom">
+                <span>UMA EXPERIÊNCIA SOBRE ESCOLHAS E TECNOLOGIA</span>
+                <span>ROLE PARA EXPLORAR ↓</span>
+            </div>
+
+        </section>
+
+        <!-- QUESTIONÁRIO -->
+
+        <section class="quiz escondido" id="quiz">
+
+            <div class="quiz-header">
+
+                <div>
+                    <p class="section-label">SIMULAÇÃO EM ANDAMENTO</p>
+                    <h2>Suas escolhas.</h2>
+                </div>
+
+                <div class="quiz-counter">
+                    <span>QUESTÃO</span>
+                    <strong id="contador">01 / 05</strong>
+                </div>
+
+            </div>
+
+            <div class="progress-container">
+
+                <div class="progress-info">
+                    <span>PROGRESSO DA SIMULAÇÃO</span>
+                    <span id="porcentagem">20%</span>
+                </div>
+
+                <div class="trilho">
+                    <div class="progresso" id="progresso"></div>
+                </div>
+
+            </div>
+
+            <div class="question-container">
+
+                <div class="question-number">
+                    <span>SCENARIO_</span>
+                    <strong id="numero-cenario">01</strong>
+                </div>
+
+                <h2 class="pergunta" id="pergunta"></h2>
+
+                <div class="answer-heading">
+                    <span>ESCOLHA SUA RESPOSTA</span>
+                    <span>SELECIONE UMA OPÇÃO ↘</span>
+                </div>
+
+                <div class="alternativas" id="alternativas"></div>
+
+            </div>
+
+            <div class="quiz-footer">
+                <span>2049 / FUTURE LAB</span>
+                <span>SEU FUTURO ESTÁ SENDO CONSTRUÍDO</span>
+            </div>
+
+        </section>
+
+        <!-- RESULTADO -->
+
+        <section class="resultado escondido" id="resultado">
+
+            <div class="result-top">
+                <span>SIMULAÇÃO CONCLUÍDA</span>
+                <span class="result-status">● FINALIZADO</span>
+            </div>
+
+            <div class="result-content">
+
+                <div class="result-symbol">✳</div>
+
+                <p class="section-label">RELATÓRIO DE DECISÕES / 2049</p>
+
+                <h2 id="titulo-resultado">
+                    O futuro chegou.
+                </h2>
+
+                <p class="result-intro">
+                    Suas escolhas ajudaram a construir este cenário.
+                </p>
+
+                <div class="result-card">
+
+                    <span class="result-card-label">
+                        SEU PERFIL DE DECISÕES
+                    </span>
+
+                    <h3 id="perfil">—</h3>
+
+                    <p class="texto-resultado" id="texto-resultado"></p>
+
+                </div>
+
+                <div class="result-stats">
+
+                    <div>
+                        <span>DECISÕES TOMADAS</span>
+                        <strong id="total-escolhas">05</strong>
+                    </div>
+
+                    <div>
+                        <span>SIMULAÇÃO</span>
+                        <strong>2049</strong>
+                    </div>
+
+                </div>
+
+                <p class="mensagem-final" id="mensagem-final"></p>
+
+                <button class="botao-iniciar" id="reiniciar">
+                    <span>REINICIAR SIMULAÇÃO</span>
+                    <span class="arrow">↻</span>
+                </button>
+
+            </div>
+
+            <div class="quiz-footer">
+                <span>FUTURE/LAB</span>
+                <span>FIM DA TRANSMISSÃO</span>
+            </div>
+
+        </section>
+
+        <footer class="global-footer">
+            <span>© 2049 FUTURE/LAB</span>
+            <span>HUMANITY × TECHNOLOGY</span>
+            <span>START BY ALURA</span>
+        </footer>
+
+    </main>
+
 </body>
 </html>
